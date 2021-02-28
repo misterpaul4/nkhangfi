@@ -20,11 +20,10 @@
 </head>
 
 <body class="text-dark">
-  <div class="banner d-flex flex-column align-items-center justify-content-center py-5 bg-img">
+  <div class="banner d-flex flex-column align-items-center justify-content-center py-5 bg-img text-center text-light">
     <img src="../images/yos/logo.png" class="d-block logo">
     <h1 class="animate__heartBeat">Nkhangfi Scholarship Program Presents</h1>
     <h2 class="animate__heartBeat">Y.O.S Turkey Entrance Examination for  90% - 100% Scholarship</h2>
-    <!-- <a class="apply-btn text-light">Apply</a> -->
     <a class="typeform-share button apply-btn text-light" href="https://form.typeform.com/to/UaSWrYWn?typeform-medium=embed-snippet" data-mode="popup" target="_blank">Apply
     </a>
     <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm_share", b="https://embed.typeform.com/"; if(!gi.call(d,id)){ js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })()
@@ -32,13 +31,13 @@
   </div>
 
   <div class="container py-3">
-    <div class="PSA flex-around">
-      <div class="app-details">
+    <div class="PSA d-sm-flex justify-content-between align-items-center">
+      <div class="app-details m-3">
         <p>Venue: TBA</p>
         <p>Application Deadline: May 1st, 2021</p>
         <p>Application Fee: $200 USD</p>
       </div>
-      <div class="exam-dates">
+      <div class="exam-dates m-3">
         <h5 class="exam-date-header">Examination Dates</h5>
         <p>
           <strong>Sierra Leone:</strong>
@@ -69,9 +68,29 @@
     </div>
   </div>
 
-  <div class="deadline bg-img text-center py-5">
-    <h1>APPLICATION DEADLINE - May 1st, 2021</h1>
-    <span id="application-deadline"></span>
+  <div class="deadline bg-img py-5 text-center">
+    <h1>APPLICATION DEADLINE <br>May 1st, 2021</h1>
+    <div id="application-deadline" class="d-flex justify-content-center flex-wrap">
+      <div class="cs-countdown bg-dark text-light p-4 m-3 rounded">
+        <span id="cs-days" class="d-block"></span>
+        <span>Days</span>
+      </div>
+
+      <div class="cs-countdown bg-dark text-light p-4 m-3 rounded">
+        <span id="cs-hours" class="d-block"></span>
+        <span>Hours</span>
+      </div>
+
+      <div class="cs-countdown bg-dark text-light p-4 m-3 rounded">
+        <span id="cs-minutes" class="d-block"></span>
+        <span>Minutes</span>
+      </div>
+
+      <div class="cs-countdown bg-dark text-light p-4 m-3 rounded">
+        <span id="cs-seconds" class="d-block"></span>
+        <span>Seconds</span>
+      </div>
+    </div>
   </div>
 
   <!-- <div class="contact-address flex-around text-center">
@@ -95,30 +114,60 @@
     </div>
   </div> -->
 
+  <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="form-outcome">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="modal-close-btn text-light" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container form-container text-center">
-      <form id="contact" action="" method="post">
+      <form id="contact">
         <h3>Get in touch</h3>
         <h4>Contact us today if you have any questions</h4>
         <fieldset>
-          <input placeholder="Your name" type="text" tabindex="1" required>
+          <input placeholder="Your name" name="name" id="name" type="text" tabindex="1">
+          <span class="tooltp-name tooltp d-none"></span>
         </fieldset>
         <fieldset>
-          <input placeholder="Your Email Address" type="email" tabindex="2" required>
+          <input placeholder="Your Email Address" name="email" id="email" type="email" tabindex="2">
+          <span class="tooltp-email tooltp d-none"></span>
         </fieldset>
         <fieldset>
-          <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+          <input placeholder="Your Phone Number" name="number" type="tel" tabindex="3">
         </fieldset>
         <fieldset>
-          <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+          <textarea placeholder="Type your Message Here...." name="message" tabindex="5"></textarea>
         </fieldset>
         <fieldset>
-          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+            <span class="pt-2 border-0 m-0">Submit</span>
+            <span class="spinner-border spinner-border-sm spinner ml-1 d-none" role="status"></span>
+          </button>
         </fieldset>
       </form>
     </div>
   </footer>
 
+  <!-- Bootstrap jQuery , Popper.js, Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="../js/yos.js"></script>
 </body>
 </html>
