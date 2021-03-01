@@ -35,22 +35,28 @@ const contactContainer = document.querySelector('#contact');
 const submitBtn = document.getElementById('contact-submit');
 const emailTooltip = document.querySelector('.tooltp-email');
 const nameTooltip = document.querySelector('.tooltp-name');
+const numberTooltip = document.querySelector('.tooltp-number');
+const messageTooltip = document.querySelector('.tooltp-message');
 const spinner = document.querySelector('.spinner');
 const form = document.getElementById('contact');
 const resultHeader = document.getElementById('exampleModalLabel');
 const resultMesssage = document.getElementById('form-outcome');
-// const popup = document.getElementById('exampleModal');
+
+let formUserName;
+let formUserEmail;
+let formUserPhone;
+let formUserMessage;
 
 const clearToolTips = () => {
   // reset tooltips
-  emailTooltip.textContent = '';
   emailTooltip.classList.add('d-none');
-  nameTooltip.textContent = '';
   nameTooltip.classList.add('d-none');
+  numberTooltip.classList.add('d-none');
+  messageTooltip.classList.add('d-none');
 };
 
 
-const validate = (email, nm) => {
+const validate = (email, nm, phone, message) => {
   clearToolTips();
   const validateEmail = () => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -74,9 +80,27 @@ const validate = (email, nm) => {
     return true;
   };
 
+  const validateNumber = () => {
+    const re =/^\+?[1-9]{1}[0-9]{3,14}$/im;
+    if(!re.test(phone)) {
+      numberTooltip.textContent = '*enter valid phone number';
+      numberTooltip.classList.remove('d-none');
+      return false;
+    }
+  };
+
+  const validateMessage = () => {
+    if(message.length < 1) {
+      messageTooltip.textContent = '*message box cannot be empty';
+      messageTooltip.classList.remove('d-none');
+    }
+  };
+
   const emailisValid = validateEmail();
   const nameisValid = validateName();
-  if (emailisValid && nameisValid) { return true; }
+  const numberisValid = validateNumber();
+  const messageisValid = validateMessage();
+  if (emailisValid && nameisValid && numberisValid && messageisValid) { return true; }
   return false;
 };
 
@@ -120,8 +144,10 @@ submitBtn.addEventListener('click', (e) => {
 
   formUserName = document.getElementById('name').value;
   formUserEmail = document.getElementById('email').value;
+  formUserMessage = document.getElementById('message').value;
+  formUserPhone = document.getElementById('phone').value;
 
-  if (validate(formUserEmail, formUserName)) {
+  if (validate(formUserEmail, formUserName, formUserPhone, formUserMessage)) {
     contactContainer.classList.add('unclickable');
     spinner.classList.remove('d-none');
 

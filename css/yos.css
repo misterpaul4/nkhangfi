@@ -57,11 +57,11 @@ a:hover {
   width: 600px;
   height: auto;
   float: left;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .details {
-  overflow: auto;
+	overflow-x: hidden;
 }
 
 .banner {
@@ -209,4 +209,10 @@ fieldset {
 }
 :-ms-input-placeholder {
  color:#888;
+}
+
+@media (max-width: 992px) {
+	.banner-img {
+		float: none;
+	}
 }
