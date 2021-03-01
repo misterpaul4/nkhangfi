@@ -81,19 +81,24 @@ const validate = (email, nm, phone, message) => {
   };
 
   const validateNumber = () => {
-    const re =/^\+?[1-9]{1}[0-9]{3,14}$/im;
+    const re =/^\+?[0-9]{1}[0-9]{3,14}$/im;
     if(!re.test(phone)) {
       numberTooltip.textContent = '*enter valid phone number';
       numberTooltip.classList.remove('d-none');
       return false;
     }
+
+    return true;
   };
 
   const validateMessage = () => {
     if(message.length < 1) {
       messageTooltip.textContent = '*message box cannot be empty';
       messageTooltip.classList.remove('d-none');
+      return false;
     }
+
+    return true;
   };
 
   const emailisValid = validateEmail();
@@ -148,9 +153,7 @@ submitBtn.addEventListener('click', (e) => {
   formUserPhone = document.getElementById('phone').value;
 
   if (validate(formUserEmail, formUserName, formUserPhone, formUserMessage)) {
-    contactContainer.classList.add('unclickable');
     spinner.classList.remove('d-none');
-
-    setTimeout(submitForm, 1000);
+    submitForm();
   }
 });
