@@ -14,9 +14,21 @@ body {
   color: #999999;
 }
 
-.socials-links img {
+/* .socials-links img {
   width: 30px;
   height: auto;
+}
+
+.socials-links .email-icon {
+  width: 40px;
+} */
+.socials-links i {
+  font-size: 40px;
+  color: darkgrey;
+}
+
+.socials-links .fa-facebook-square {
+  font-size: 38px;
 }
 
 /*//////////////////////////////////////////////////////////////////
